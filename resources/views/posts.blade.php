@@ -9,28 +9,10 @@
     <script src="s/app.js"></script>
 </head>
 <body>
-    <article>
-        <h1><a href="/posts/my-first-post"> My First Post</a></h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur impedit possimus voluptate reiciendis officiis dolore blanditiis at, quam dolor quisquam recusandae nam minus quaerat aliquam sequi velit similique repellat vel.
-        </p>
+@foreach ($posts as $post)
+  <article>
+   {!!   $post!!}
     </article>
-    <article>
-
-        <h1><a href="/posts/my-second-post"> My Second Post</a></h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur impedit possimus voluptate reiciendis officiis dolore blanditiis at, quam dolor quisquam recusandae nam minus quaerat aliquam sequi velit similique repellat vel.
-        </p>
-
-    </article>
-    <article>
-
-        <h1><a href="/posts/my-third-post"> My Third Post</a></h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur impedit possimus voluptate reiciendis officiis dolore blanditiis at, quam dolor quisquam recusandae nam minus quaerat aliquam sequi velit similique repellat vel.
-        </p>
-
-
-    </article>
-</body>
+@endforeach
+<body>
 </html>
