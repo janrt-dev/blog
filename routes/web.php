@@ -20,31 +20,30 @@ Route::get('/', function () {
 
     $files = File::files(resource_path("posts"));
 
-    $posts = array_map(function($file){
 
-    $doc = YamlFrontMatter::parseFile(
-         $file->getPathname()
-    );
+    // collect an array and wrap within a collection object
+    $posts = collect($files)->map(function ($file) {
 
-    return new Post(
-        $doc->title,
-        $doc->excerpt,
-        $doc->date,
-        $doc->body,
-        $doc->slug
-    );
+        $doc = YamlFrontMatter::parseFile(
+            $file->getPathname()
+        );
 
-    }, $files);
+        return new Post(
+            $doc->title,
+            $doc->excerpt,
+            $doc->date,
+            $doc->body,
+            $doc->slug
+        );
+    });
 
-
-    return view('posts',['posts' =>$posts]);
-
+    return view('posts', ['posts' => $posts]);
 });
 
 
-Route::get('posts/{post}', function($slug){
+Route::get('posts/{post}', function ($slug) {
 
     $post = Post::find($slug);
 
-    return view('post',['post' => $post]);
+    return view('post', ['post' => $post]);
 })->where('post', '[a-zA-Z_\-]+');
