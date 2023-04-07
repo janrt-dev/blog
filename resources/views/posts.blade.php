@@ -11,7 +11,9 @@
 <body>
 @foreach ($posts as $post)
   <article>
-   {!!   $post!!}
+   {{--  {!!   $post!!}  --}}
+  <h1>{!! $post->title  !!}</h1>
+  <p> {!!$post->excerpt  !!}</p>
     </article>
 @endforeach
 <body>
