@@ -18,18 +18,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
 
-    // collect an array and wrap within a collection object
-    $posts = collect(File::files(resource_path("posts"))) // find all the files in posts directory and collect them into a collection
-
-        ->map(fn ($file) => YamlFrontMatter::parseFile($file->getPathname())) // loop or map over each item, then parse each one into a document.
-        // map over each document, then build the post object by assign each value to the corresponding attribute.
-        ->map(fn ($doc) => new Post(
-            $doc->title,
-            $doc->excerpt,
-            $doc->date,
-            $doc->body,
-            $doc->slug
-        ));
+   $posts = Post::all();
    // pass the collection result to the posts view
     return view('posts', ['posts' => $posts]);
 });
