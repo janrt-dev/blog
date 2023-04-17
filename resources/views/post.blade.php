@@ -10,7 +10,8 @@
 </head>
 <body>
     <article>
-        {{ $post }}
+
+        {!!$post->body  !!}
     </article>
     <a href="/">Go Back</a>
 </body>
